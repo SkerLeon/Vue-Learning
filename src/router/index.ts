@@ -6,12 +6,12 @@ const router = createRouter({
     {
       path: '/',
       name: 'home',
-      component: () => import('../views/HomeView.vue'),
+      component: () => import('../pages/HomeView.vue'),
     },
     {
       path: '/firebase',
       name: 'fireBase',
-      component: () => import('../views/FireBase.vue'),
+      component: () => import('../pages/FireBase.vue'),
     },
   ],
 })
