@@ -11,7 +11,12 @@ const router = createRouter({
     {
       path: '/firebase',
       name: 'fireBase',
-      component: () => import('../pages/FireBase.vue'),
+      component: () => import('../pages/firebase/FireBase.vue'),
+    },
+    {
+      path: '/jsonServer',
+      name: 'jsonServer',
+      component: () => import('../pages/jsonserver/JsonServer.vue'),
     },
   ],
 })
