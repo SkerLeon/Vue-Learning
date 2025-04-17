@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import jsonServer from '@/api/jsonServer'
+
 const props = defineProps<{
   title: string
   apiPath: string
@@ -10,33 +12,22 @@ const form = reactive<Record<string, string>>(Object.fromEntries(props.fields.ma
 onMounted(fetchData)
 
 async function fetchData() {
-  const res = await fetch(`http://localhost:3000/${props.apiPath}`)
-  items.value = await res.json()
+  items.value = await jsonServer.getJsonServerData<Record<string, any>[]>(props.apiPath)
 }
 
 async function handleAdd() {
-  await fetch(`http://localhost:3000/${props.apiPath}`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(form),
-  })
+  await jsonServer.postJsonServerData(props.apiPath, form)
   await fetchData()
   Object.keys(form).forEach((k) => (form[k] = ''))
 }
 
 async function handleDelete(id: number) {
-  await fetch(`http://localhost:3000/${props.apiPath}/${id}`, {
-    method: 'DELETE',
-  })
+  await jsonServer.deleteJsonServerData(`${props.apiPath}/${id}`)
   await fetchData()
 }
 
 async function handleEdit(id: number) {
-  await fetch(`http://localhost:3000/${props.apiPath}/${id}`, {
-    method: 'PUT',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(form),
-  })
+  await jsonServer.putJsonServerData(`${props.apiPath}/${id}`, form)
   await fetchData()
   Object.keys(form).forEach((k) => (form[k] = ''))
 }

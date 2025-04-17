@@ -17,6 +17,7 @@
     "json-server:start": "cd ./mockdata && node generate-db.js && json-server --watch ./db.json && cd ../"
   },
   "dependencies": {
+    "axios": "^1.8.4",
     "firebase": "^11.5.0",
     "pinia": "^3.0.1",
     "vue": "^3.5.13",
