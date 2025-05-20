@@ -35,6 +35,8 @@ instance.interceptors.response.use(
 
 // 通用請求函式
 const request = <T = any>(config: InternalAxiosRequestConfig): Promise<T> => {
+  // 確保 headers 存在，避免型別錯誤
+  config.headers = config.headers || {}
   return instance(config)
 }
 
