@@ -18,6 +18,11 @@ const router = createRouter({
       name: 'jsonServer',
       component: () => import('../pages/jsonserver/JsonServer.vue'),
     },
+    {
+      path: '/aiTest',
+      name: 'aiTest',
+      component: () => import('../pages/ai/aiTest.vue'),
+    },
   ],
 })
 
