@@ -21,7 +21,7 @@ const router = createRouter({
     {
       path: '/aiTest',
       name: 'aiTest',
-      component: () => import('../pages/ai/aiTest.vue'),
+      component: () => import('../pages/ai/Ai.vue'),
     },
   ],
 })
